@@ -1,4 +1,5 @@
 seaborn
 numpy 
 pandas
--e .
+catboost
+# -e .
