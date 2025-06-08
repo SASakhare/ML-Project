@@ -2,8 +2,7 @@
 #* Importing the Required module's
 import os 
 import sys
-import os
-import sys
+
 
 #* Add the root folder to the import path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
@@ -14,6 +13,9 @@ import pandas as pd
 
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
+
+from src.components.data_transformation import DataTransformatioConfig
+from src.components.data_transformation import DataTransformation
 
 
 #* Creating the class for Storing the path of the training ,testing ,raw data together
@@ -81,7 +83,11 @@ class DataIngestion:
 
 if __name__ =='__main__' :
     obj=DataIngestion()
-    obj.initiate_data_ingestion()
+    train_data,test_data=obj.initiate_data_ingestion()
+    
+    data_transformation=DataTransformation()
+    data_transformation.initiate_data_tranformation(train_data,test_data)
+    
 
 
 
