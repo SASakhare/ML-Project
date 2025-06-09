@@ -16,6 +16,8 @@ from dataclasses import dataclass
 
 from src.components.data_transformation import DataTransformatioConfig
 from src.components.data_transformation import DataTransformation
+from src.components.model_trainer import ModelTrainerConfig
+from src.components.model_trainer import ModelTrainer
 
 
 #* Creating the class for Storing the path of the training ,testing ,raw data together
@@ -86,7 +88,9 @@ if __name__ =='__main__' :
     train_data,test_data=obj.initiate_data_ingestion()
     
     data_transformation=DataTransformation()
-    data_transformation.initiate_data_tranformation(train_data,test_data)
+    train_arr,test_arr,_= data_transformation.initiate_data_tranformation(train_data,test_data)
+    model_trainer=ModelTrainer()
+    print("Accuracy Score of Best Model :",model_trainer.initiate_model_trainer(train_arr,test_arr))
     
 
 
